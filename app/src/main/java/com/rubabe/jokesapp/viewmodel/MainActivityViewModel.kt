@@ -21,8 +21,6 @@ class MainActivityViewModel: ViewModel() {
             override fun onResponse(call: Call<Jokes>, response: Response<Jokes>) {
                 val data: Jokes? = response.body()
                 this@MainActivityViewModel.jokesLiveData.postValue(data)
-
-
             }
 
             override fun onFailure(call: Call<Jokes>, t: Throwable) {

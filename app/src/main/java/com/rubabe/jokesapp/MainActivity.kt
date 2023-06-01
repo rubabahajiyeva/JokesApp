@@ -19,8 +19,13 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
         viewModel = ViewModelProvider(this)[MainActivityViewModel::class.java]
         spinner = findViewById(R.id.progressBar)
-        spinner.visibility = View.VISIBLE
+        spinner.visibility = View.GONE
         viewModel.getJokes(this)
+        binding.buttonNext.setOnClickListener{
+            spinner.visibility = View.VISIBLE
+            viewModel.getJokes(this)
+        }
+
 
         viewModel.jokesLiveData.observe(this) {
             spinner.visibility = View.GONE
